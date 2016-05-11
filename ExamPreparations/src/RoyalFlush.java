@@ -28,7 +28,10 @@ public class RoyalFlush {
                 case "10s": if (spades.size() == 0){
                     spades.add(matcher.group());
                 }
-                else spades.clear();
+                else {
+                    spades.clear();
+                    spades.add(matcher.group());
+                }
                     break;
                 case "Js": if (spades.size() == 1 && spades.contains("10s") && !spades.contains("Js")){
                     spades.add(matcher.group());
@@ -57,7 +60,10 @@ public class RoyalFlush {
                 case "10c":if (clubs.size() == 0){
                     clubs.add(matcher.group());
                 }
-                else clubs.clear();
+                else{
+                    clubs.clear();
+                    clubs.add(matcher.group());
+                }
                     break;
                 case "Jc":if (clubs.size() == 1 && clubs.contains("10c") && !clubs.contains("Jc")){
                     clubs.add(matcher.group());
@@ -85,7 +91,10 @@ public class RoyalFlush {
                 case "10d":if (diamonds.size() == 0){
                     diamonds.add(matcher.group());
                 }
-                else diamonds.clear();
+                else {
+                    diamonds.clear();
+                    diamonds.add(matcher.group());
+                }
                     break;
                 case "Jd": if (diamonds.size() == 1 && diamonds.contains("10d") && !diamonds.contains("Jd")){
                     diamonds.add(matcher.group());
@@ -114,7 +123,10 @@ public class RoyalFlush {
                 case "10h":if (hearts.size() == 0){
                     hearts.add(matcher.group());
                 }
-                else hearts.clear();
+                else {
+                    hearts.clear();
+                    hearts.add(matcher.group());
+                }
                     break;
                 case "Jh":if (hearts.size() == 1 && hearts.contains("10h") && !hearts.contains("Jh")){
                     hearts.add(matcher.group());
@@ -137,6 +149,19 @@ public class RoyalFlush {
                     hearts.clear();
                 }
                 else hearts.clear();
+                    break;
+                default: if (matcher.group().contains("s")){
+                    spades.clear();
+                }
+                    else if (matcher.group().contains("c")){
+                    clubs.clear();
+                }else if (matcher.group().contains("h")){
+                    hearts.clear();
+                } else {
+                    if (matcher.group().contains("d")){
+                        diamonds.clear();
+                    }
+                }
                     break;
             }
         }
